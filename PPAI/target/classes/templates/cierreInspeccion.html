@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cierre de Inspeccion</title>
+</head>
+<body>
+    <h1>Gestion de Cierre de Inspecciones</h1>
+
+    <div th:if="${mensaje}" class="success-message" th:text="${mensaje}"></div>
+    <div th:if="${error}" class="error-message" th:text="${error}"></div>
+
+    <hr/>
+    <h1>La concha de tu madre river</h1>
+    <p>Ordenes finalizadas: <span th:text="${grillaOrdenInspeccionFinalizadas.size()}">0</span></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Número Orden</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="orden : ${grillaOrdenInspeccionFinalizadas}">
+                <td th:text="${orden.numeroOrden}"></td>
+            </tr>
+        </tbody>
+    </table>
+    </body>
+</html>

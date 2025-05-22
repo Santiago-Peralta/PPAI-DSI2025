@@ -1,4 +1,4 @@
-package main.java.com.redSismica.cierreInspeccion.entity;
+package com.redSismica.cierreInspeccion.entity;
 
 import java.time.LocalDateTime;
 
@@ -83,7 +83,7 @@ public class OrdenDeInspeccion {
         return estado != null && estado.sosCompletamenteRealizada();
     }
 
-    public String obtenerDatosOI() {
+/*     public String obtenerDatosOI() {
         int numero = this.getNumeroOrden();
         String fechaFinal = this.getFechaHoraFinalizacion().toString();
         String nombreEstacion = this.getEstacionSismologica().getNombre();
@@ -91,5 +91,5 @@ public class OrdenDeInspeccion {
 
         return String.format("Orden: %d | Finaliza: %s | Estación: %s | Sismógrafo: %s",
                             numero, fechaFinal, nombreEstacion, idSismografo);
-    }   
+    }    */
 }

@@ -1,4 +1,4 @@
-package main.java.com.redSismica.cierreInspeccion.boundary;
+package com.redSismica.cierreInspeccion.boundary;
 
 public class PantallaCCRS {
     

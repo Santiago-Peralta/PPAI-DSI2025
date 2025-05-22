@@ -1,0 +1,17 @@
+com\redSismica\cierreInspeccion\CierreInspeccionApplication.class
+com\redSismica\cierreInspeccion\entity\Empleado.class
+com\redSismica\cierreInspeccion\services\GestorCierreInspeccion.class
+com\redSismica\cierreInspeccion\entity\Rol.class
+com\redSismica\cierreInspeccion\entity\MotivoFueraServicio.class
+com\redSismica\cierreInspeccion\boundary\InterfazNotificacionMail.class
+com\redSismica\cierreInspeccion\entity\Sesion.class
+com\redSismica\cierreInspeccion\entity\OrdenDeInspeccion.class
+com\redSismica\cierreInspeccion\boundary\PantallaCCRS.class
+com\redSismica\cierreInspeccion\entity\Sismografo.class
+com\redSismica\cierreInspeccion\boundary\InterfazCierreInspeccion.class
+com\redSismica\cierreInspeccion\controller\GestorCierreInspeccionController.class
+com\redSismica\cierreInspeccion\entity\MotivoTipo.class
+com\redSismica\cierreInspeccion\entity\Usuario.class
+com\redSismica\cierreInspeccion\entity\CambioDeEstado.class
+com\redSismica\cierreInspeccion\entity\EstacionSismologica.class
+com\redSismica\cierreInspeccion\entity\Estado.class

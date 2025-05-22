@@ -1,4 +1,4 @@
-package main.java.com.redSismica.cierreInspeccion.entity;
+package com.redSismica.cierreInspeccion.entity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

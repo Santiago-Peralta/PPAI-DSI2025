@@ -1,0 +1,17 @@
+C:\Users\matu_\OneDrive\Documentos\Universidad\PPAI-DSI2025\PPAI\src\main\java\com\redSismica\cierreInspeccion\entity\Empleado.java
+C:\Users\matu_\OneDrive\Documentos\Universidad\PPAI-DSI2025\PPAI\src\main\java\com\redSismica\cierreInspeccion\entity\EstacionSismologica.java
+C:\Users\matu_\OneDrive\Documentos\Universidad\PPAI-DSI2025\PPAI\src\main\java\com\redSismica\cierreInspeccion\entity\Sesion.java
+C:\Users\matu_\OneDrive\Documentos\Universidad\PPAI-DSI2025\PPAI\src\main\java\com\redSismica\cierreInspeccion\boundary\InterfazCierreInspeccion.java
+C:\Users\matu_\OneDrive\Documentos\Universidad\PPAI-DSI2025\PPAI\src\main\java\com\redSismica\cierreInspeccion\entity\MotivoTipo.java
+C:\Users\matu_\OneDrive\Documentos\Universidad\PPAI-DSI2025\PPAI\src\main\java\com\redSismica\cierreInspeccion\controller\GestorCierreInspeccionController.java
+C:\Users\matu_\OneDrive\Documentos\Universidad\PPAI-DSI2025\PPAI\src\main\java\com\redSismica\cierreInspeccion\entity\Usuario.java
+C:\Users\matu_\OneDrive\Documentos\Universidad\PPAI-DSI2025\PPAI\src\main\java\com\redSismica\cierreInspeccion\entity\Sismografo.java
+C:\Users\matu_\OneDrive\Documentos\Universidad\PPAI-DSI2025\PPAI\src\main\java\com\redSismica\cierreInspeccion\boundary\InterfazNotificacionMail.java
+C:\Users\matu_\OneDrive\Documentos\Universidad\PPAI-DSI2025\PPAI\src\main\java\com\redSismica\cierreInspeccion\boundary\PantallaCCRS.java
+C:\Users\matu_\OneDrive\Documentos\Universidad\PPAI-DSI2025\PPAI\src\main\java\com\redSismica\cierreInspeccion\entity\Estado.java
+C:\Users\matu_\OneDrive\Documentos\Universidad\PPAI-DSI2025\PPAI\src\main\java\com\redSismica\cierreInspeccion\entity\OrdenDeInspeccion.java
+C:\Users\matu_\OneDrive\Documentos\Universidad\PPAI-DSI2025\PPAI\src\main\java\com\redSismica\cierreInspeccion\entity\Rol.java
+C:\Users\matu_\OneDrive\Documentos\Universidad\PPAI-DSI2025\PPAI\src\main\java\com\redSismica\cierreInspeccion\CierreInspeccionApplication.java
+C:\Users\matu_\OneDrive\Documentos\Universidad\PPAI-DSI2025\PPAI\src\main\java\com\redSismica\cierreInspeccion\entity\CambioDeEstado.java
+C:\Users\matu_\OneDrive\Documentos\Universidad\PPAI-DSI2025\PPAI\src\main\java\com\redSismica\cierreInspeccion\services\GestorCierreInspeccion.java
+C:\Users\matu_\OneDrive\Documentos\Universidad\PPAI-DSI2025\PPAI\src\main\java\com\redSismica\cierreInspeccion\entity\MotivoFueraServicio.java

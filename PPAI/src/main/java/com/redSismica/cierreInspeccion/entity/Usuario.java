@@ -1,4 +1,4 @@
-package main.java.com.redSismica.cierreInspeccion.entity;
+package com.redSismica.cierreInspeccion.entity;
 
 public class Usuario {
     private String nombreUsuario;
