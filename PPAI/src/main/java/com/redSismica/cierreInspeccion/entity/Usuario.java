@@ -36,5 +36,7 @@ public class Usuario {
     }
     
     // Metodos unicos (Preguntar a donde apunta el getRILogueado())
-    
+    public Empleado getRILogueado(){
+        return empleado;
+    }
 }

@@ -29,7 +29,7 @@ public class Estado {
 
 
     // Metodos unicos
-    public boolean sosCompletamenteRealizada() {
+    public boolean sosCompletamenteRealizado() {
         return "Completamente Realizada".equalsIgnoreCase(nombreEstado);
     }
     
@@ -41,13 +41,13 @@ public class Estado {
         return "Cerrada".equalsIgnoreCase(nombreEstado);
     }
 
-    // public boolean sosAmbitoOI() {
-    //     return ;
-    // }
+    public boolean sosAmbitoOI() {
+        return "OI".equalsIgnoreCase(ambito);
+    }
 
-    // public boolean sosAmbitoSismografo() {
-    //     return ;
-    // }
+     public boolean sosAmbitoSismografo() {
+         return "Sismografo".equalsIgnoreCase(ambito);
+     }
 
     public boolean sosFueraDeServicio() {
         return "Fuera de Servicio".equalsIgnoreCase(nombreEstado);

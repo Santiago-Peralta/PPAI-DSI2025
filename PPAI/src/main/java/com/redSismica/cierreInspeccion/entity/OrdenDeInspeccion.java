@@ -83,8 +83,8 @@ public class OrdenDeInspeccion {
 
 
     // Metodos unicos
-    public boolean sosCompletamenteRealizada() {
-        return estado != null && estado.sosCompletamenteRealizada();
+    public boolean sosCompletamenteRealizado() {
+        return estado != null && estado.sosCompletamenteRealizado();
     }
 
     public String obtenerDatosOI() {
@@ -101,13 +101,23 @@ public class OrdenDeInspeccion {
         return estacionSismologica.getIdentificadorSismografo();
     }
 
+    // Metodos unicos
 
-    // Faltaria atributo de que una OI tiene 1 empleado??
-    public boolean sosDeEmpleado(Empleado empleado) {
-        return empleado != null;
+    public boolean sosDeEmpleado(Empleado empleadoX) {
+        return empleado.equals(empleadoX);
     }
 
-    // Falta cerrar() actualizarSismografo()
 
+    public void cerrar(Estado estadoCerrado, LocalDateTime fechaHoraActual) {
+        // Settear fechaHoraActual
+        setFechaHoraCierre(fechaHoraActual);
+        // Settear estado a cerrado
+        setEstado(estadoCerrado);
+    }
 
+    public void actualizarSismografo(List<MotivoFueraServicio> motivos) {
+        this.estacionSismologica.cerrarServicio(motivos, this.empleado, estado);
+    }
+
+    // Completo
 }

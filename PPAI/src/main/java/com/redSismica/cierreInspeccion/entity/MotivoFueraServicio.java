@@ -16,7 +16,7 @@ public class MotivoFueraServicio {
         return comentario;
     }
 
-    public void setComentatio(String comentario) {
+    public void setComentario(String comentario) {
         this.comentario = comentario;
     }
 

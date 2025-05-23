@@ -89,7 +89,7 @@ public class EstacionSismologica {
         this.nroCertificacionAdquisicion = nroCertificacionAdquisicion;
     }
 
-    // Faltan metodos (todos). Preguntar por metodo getSismografo() -> para mi falta atributo Sismografo sismografo que hace referencia al numero del sismografo
+    // Metodos Unicos
 
     public int getIdentificadorSismografo() {
         // Verificar si el sismografo es nulo
@@ -101,5 +101,14 @@ public class EstacionSismologica {
         }
     }
 
-    
+    public void cerrarServicio(List<MotivoFueraServicio> motivos, Empleado responsableInspeccion, Estado estadoFueraServicio) {
+        if (sismografo != null) {
+            sismografo.cerrarServicio(motivos, responsableInspeccion, estadoFueraServicio);
+        }
+    }
+
+
+
+
+
 }

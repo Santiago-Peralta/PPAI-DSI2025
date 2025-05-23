@@ -2,13 +2,15 @@ package com.redSismica.cierreInspeccion.entity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Sismografo {
     private LocalDate fechaAdquisicion;
     private int identificadorSismografo;
     private int nroSerie;
     private Estado estadoActual;
-    private CambioDeEstado cambiosDeEstado;
+    private List<CambioDeEstado> cambiosDeEstado = new ArrayList<>();
 
     public Sismografo(LocalDate fechaAdquisicion, int identificadorSismografo,int nroSerie,Estado estadoActual,CambioDeEstado cambiosDeEstado) {
         this.fechaAdquisicion = fechaAdquisicion;
@@ -64,5 +66,16 @@ public class Sismografo {
         this.estadoActual = estado;
     }
 
-    // Falta metodo cerrarServicio()
+    public void cerrarServicio(List<MotivoFueraServicio> motivos, Empleado responsableInspeccion, Estado nuevoEstado) {
+        LocalDateTime ahora = LocalDateTime.now();
+        
+        if (!cambiosDeEstado.isEmpty() && cambiosDeEstado.get(cambiosDeEstado.size()-1).sosActual()) {
+            cambiosDeEstado.get(cambiosDeEstado.size()-1).setFechaHoraFin(ahora);
+        }
+        
+        CambioDeEstado nuevoCambio = new CambioDeEstado(null, ahora, nuevoEstado, motivos, responsableInspeccion);
+        cambiosDeEstado.add(nuevoCambio);
+        this.estadoActual = nuevoEstado;
+    }
+
 }

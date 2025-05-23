@@ -1,4 +1,6 @@
 package com.redSismica.cierreInspeccion.entity;
+import java.util.List;
+import java.util.ArrayList;
 
 import java.time.LocalDateTime;
 
@@ -6,10 +8,10 @@ public class CambioDeEstado {
     private LocalDateTime fechaHoraFin;
     private LocalDateTime fechaHoraInicio;
     private Estado estado;
-    private MotivoFueraServicio motivoFueraServicio;
+    private List<MotivoFueraServicio> motivoFueraServicio = new ArrayList<>();
     private Empleado responsableInspeccion;
 
-    public CambioDeEstado(LocalDateTime fechaHoraFin, LocalDateTime fechaHoraInicio, Estado estado, MotivoFueraServicio motivoFueraServicio, Empleado responsableInspeccion) {
+    public CambioDeEstado(LocalDateTime fechaHoraFin, LocalDateTime fechaHoraInicio, Estado estado, List<MotivoFueraServicio> motivoFueraServicio, Empleado responsableInspeccion) {
         this.fechaHoraFin = fechaHoraFin;
         this.fechaHoraInicio = fechaHoraInicio;
         this.estado = estado;
@@ -42,15 +44,15 @@ public class CambioDeEstado {
     public void setEstado(Estado estado) {
         this.estado = estado;
     }
-    
-    public MotivoFueraServicio getMotivoFueraServicio() {
+
+    public List<MotivoFueraServicio> getMotivoFueraServicio() {
         return motivoFueraServicio;
     }
 
-    public void setMotivoFueraServicio(MotivoFueraServicio motivoFueraServicio) {
+    public void setMotivoFueraServicio(List<MotivoFueraServicio> motivoFueraServicio) {
         this.motivoFueraServicio = motivoFueraServicio;
     }
-    
+
     public Empleado getResponsableInspeccion() {
         return responsableInspeccion;
     }
@@ -59,8 +61,6 @@ public class CambioDeEstado {
         this.responsableInspeccion = responsableInspeccion;
     }
 
-
-    // Metodos Unicos
     public boolean sosActual() {
         return this.fechaHoraFin == null;
     }
@@ -70,10 +70,7 @@ public class CambioDeEstado {
     }
 
     public void crearMotivoFueraServicio(String comentario, MotivoTipo motivoTipo) {
-        this.motivoFueraServicio = new MotivoFueraServicio(comentario, motivoTipo);
+        this.motivoFueraServicio.add(new MotivoFueraServicio(comentario, motivoTipo));
     }
-    
 
 }
-
-//Completo

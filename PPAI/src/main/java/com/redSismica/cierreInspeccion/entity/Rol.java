@@ -17,7 +17,7 @@ public class Rol {
         this.descripcionRol = descripcionRol;
     }
 
-    public String getNombreRol() {
+    public String getNombre() {
         return nombre;
     }
 
@@ -30,6 +30,9 @@ public class Rol {
     public boolean sosResponsableReparacion() {
         return "Responsable Reparacion".equalsIgnoreCase(nombre);
     }
-}
+    public String getNombreRol() {
+        return nombre;
+    }
+    }
 
 // Completo 

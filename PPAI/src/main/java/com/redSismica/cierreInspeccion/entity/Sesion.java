@@ -41,11 +41,8 @@ public class Sesion {
     }
     
     // Metodos unicos
-    public String obtenerRILogueado() {
-        if (this.fechaHoraFin == null) {
-            return this.usuario.getNombreUsuario();
-        } else {
-            return null;
-        }
+    public Empleado obtenerRILogueado() {
+        return this.usuario.getRILogueado();
     }
+
 }
