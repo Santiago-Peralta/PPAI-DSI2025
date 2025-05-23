@@ -101,7 +101,7 @@ public class EstacionSismologica {
         }
     }
 
-    public void cerrarServicio(List<MotivoFueraServicio> motivos, Empleado responsableInspeccion, Estado estadoFueraServicio) {
+    public void cerrarServicio(List<MotivoTipo> motivos, Empleado responsableInspeccion, Estado estadoFueraServicio) {
         if (sismografo != null) {
             sismografo.cerrarServicio(motivos, responsableInspeccion, estadoFueraServicio);
         }

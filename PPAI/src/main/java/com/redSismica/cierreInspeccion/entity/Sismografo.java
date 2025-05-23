@@ -17,7 +17,7 @@ public class Sismografo {
         this.identificadorSismografo = identificadorSismografo;
         this.nroSerie = nroSerie;
         this.estadoActual = estadoActual;
-        this.cambiosDeEstado = cambiosDeEstado;
+        this.cambiosDeEstado = (cambiosDeEstado != null) ? new ArrayList<>() : cambiosDeEstado.getCambiosDeEstado();
     }
 
     public LocalDate getFechaAdquisicion() {
@@ -52,30 +52,30 @@ public class Sismografo {
         this.estadoActual = estadoActual;
     }
 
-    public CambioDeEstado getCambiosDeEstado() {
-        return cambiosDeEstado;
+    public List<CambioDeEstado> getCambiosDeEstado() {
+        return new ArrayList<>(cambiosDeEstado);
     }
 
     public void setCambiosDeEstado(CambioDeEstado cambiosDeEstado) {
-        this.cambiosDeEstado = cambiosDeEstado;
+        this.cambiosDeEstado = (cambiosDeEstado != null) ? new ArrayList<>() : cambiosDeEstado.getCambiosDeEstado();
     }
 
-    public void crearCambioEstado(LocalDateTime fechaHoraFin, LocalDateTime fechaHoraInicio, Estado estado, MotivoFueraServicio motivoFueraServicio, Empleado responsableInspeccion) {
-        CambioDeEstado nuevoCambioDeEstado = new CambioDeEstado(fechaHoraFin, null, estado, motivoFueraServicio, responsableInspeccion);
-        this.cambiosDeEstado = nuevoCambioDeEstado;
-        this.estadoActual = estado;
-    }
-
-    public void cerrarServicio(List<MotivoFueraServicio> motivos, Empleado responsableInspeccion, Estado nuevoEstado) {
-        LocalDateTime ahora = LocalDateTime.now();
-        
-        if (!cambiosDeEstado.isEmpty() && cambiosDeEstado.get(cambiosDeEstado.size()-1).sosActual()) {
-            cambiosDeEstado.get(cambiosDeEstado.size()-1).setFechaHoraFin(ahora);
+    public void crearCambioEstado(Estado estado, LocalDateTime fechaHoraActual , Empleado responsableInspeccion, List<MotivoTipo> motivosFueraServicio , List <String> comentarios) {
+        CambioDeEstado nuevoCambio = new CambioDeEstado(null , fechaHoraActual, estado , null, responsableInspeccion);
+        for (int i = 0; i < motivosFueraServicio.size(); i++) {
+            nuevoCambio.crearMotivoFueraServicio( comentarios.get(i) ,motivosFueraServicio.get(i))
         }
-        
-        CambioDeEstado nuevoCambio = new CambioDeEstado(null, ahora, nuevoEstado, motivos, responsableInspeccion);
-        cambiosDeEstado.add(nuevoCambio);
-        this.estadoActual = nuevoEstado;
+        this.cambiosDeEstado.add(nuevoCambio);
     }
 
+    public void cerrarServicio(List<MotivoTipo> motivos, List<String> comentarios, Estado nuevoEstado, Empleado responsableInspeccion, LocalDateTime ahora) {
+        for (CambioDeEstado cambioEstado : this.cambiosDeEstado){
+            if (cambioEstado.sosActual()){
+                cambioEstado.setFechaHoraFin(ahora);
+
+            }
+        }
+        this.setEstadoActual(nuevoEstado);
+        this.crearCambioEstado(nuevoEstado, ahora, responsableInspeccion, motivos, comentarios);
+    }
 }

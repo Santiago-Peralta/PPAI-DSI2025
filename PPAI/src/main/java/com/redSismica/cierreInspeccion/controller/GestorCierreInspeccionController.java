@@ -25,16 +25,17 @@ public class GestorCierreInspeccion {
     private InterfazNotificacionMail pantallaMail;
     private PantallaCCRS pantallaCCRS;
     private Usuario usuarioLogueado;
-    private List<String> listOrdenesInspeccion;
+    private List<String> listOrdenesInspeccion = new ArrayList<>();
     private Estado estadoCompletamenteRealizado;
     private OrdenDeInspeccion ordenInspeccionSeleccionada;
-    private String observacionOrdenCierre;
-    private List<MotivoTipo> listSeleccionMotivo;
-    private List<String> listComentarioParaMotivo;
+    private String observacionOrdenCierre = "";
+    private List<MotivoTipo> listSeleccionMotivo = new ArrayList<>();
+    private List<String> listComentarioParaMotivo = new ArrayList<>();
     private Estado estadoCerrado;
     private Estado estadoFueraDeServicio;
-    private List<MotivoTipo> listMotivoTipo;
-    private List<String> listMailsResponsables;
+    private List<MotivoTipo> listMotivoTipo = new ArrayList<>();
+    private List<String> listMailsResponsables = new ArrayList<>();
+
 
     public GestorCierreInspeccion(
             Empleado empleadoLogueado,
@@ -285,14 +286,119 @@ public void setEmpleadoLogueado(Empleado empleadoLogueado) {
         for (OrdenDeInspeccion orden : ordenadas) {
             listOrdenesInspeccion.add(orden.obtenerDatosOI());
         }
+        
+        // pantalla.solicitarSeleccionOI(listOrdenesInspeccion);
+        
 
-        return listOrdenesInspeccion;
+        setListOrdenesInspeccion(listOrdenesInspeccion);
     }
 
     public List<OrdenDeInspeccion> ordenarPorFechaDeFin(List<OrdenDeInspeccion> lista) {
         lista.sort(Comparator.comparing(OrdenDeInspeccion::getFechaHoraFinalizacion));
         return lista;
     }
+    
+    
+    public void tomarSeleccionOI(String seleccion) {
+        for (OrdenDeInspeccion orden : this.listOrdenesInspeccion) {
+            if (orden.obtenerDatosOI().equals(seleccion)) {
+                setOrdenInspeccionSeleccionada(orden);
+                break;
+            }
+        }
+    }
 
+    //public void pedirObservacionOrdenCierre(){
+        //pantallaCierreInspeccion.pedirObservacionOrdenCierre();
+    //}
 
+    public void tomarObservacionOrdenCierre(String observacion) {
+        this.observacionOrdenCierre = observacion;
+    }
+
+    public void habilitarActualizarSismografo(List<MotivoTipo> listaTodosLosMotivos){
+        List<String> listaAuxiliar = new ArrayList<>();
+        for (MotivoTipo motivo : listaTodosLosMotivos) {
+                listaAuxiliar.add(motivo.getDescripcion());
+            }
+        setListMotivoTipo(listaTodosLosMotivos);
+        //pantalla.solicitarSeleccionMotivo(listaAuxiliar);
+    }
+
+    public void tomarSeleccionMotivo(List<String> seleccionados) {
+        for (String seleccionado : seleccionados){
+            MotivoTipo filtrado;
+            filtrado = listMotivoTipo.stream()
+                    .filter(motivo -> motivo.getDescripcion().equals(seleccionado))
+                    .findFirst()
+                    .orElse(null);
+
+            if (filtrado != null) { this.listSeleccionMotivo.add(filtrado);}
+    }
+        //pantalla.solicitarComentarioMotivo(listSeleccionMotivo);
+    }
 }
+
+    public void tomarComentario(String comentario) {
+        this.listComentarioParaMotivo.add(comentario);
+    }
+
+    public void obtenerConfirmacionOI(){
+        //pantallaCierreInspeccion.solicitarConfirmacionCierre();
+    }
+    public void tomarConfirmacionOI(boolean confirmacion) {
+        if (confirmacion) {
+        } else {
+            //pantallaCierreInspeccion.mostrarError("No se ha confirmado el cierre de la OI");
+        }
+    }
+    public void validarDatosMinimos(){
+    if (this.observacionOrdenCierre.equals("") ||
+            this.listSeleccionMotivo.isEmpty() ||
+            this.listComentarioParaMotivo.isEmpty()) {
+        //pantallaCierreInspeccion.mostrarError("Faltan datos para el cierre de la OI");
+    } else {
+        this.cerrarOI();
+
+    }
+    }
+
+    public void cerrarOI(List <Estado> listaTodosLosEstados){
+    this.setFechaHoraActual(LocalDateTime.now());
+    for (Estado estado : listaTodosLosEstados) {
+        if (estado.sosAmbitoOI() && estado.sosCerrada()) {
+            this.setEstadoCerrado(estado);
+            break;
+        }
+    }
+    this.ordenInspeccionSeleccionada.setFechaHoraCierre(this.fechaHoraActual);
+    this.ordenInspeccionSeleccionada.cerrar(this.estadoCerrado);
+    this.actualizarSismografo(listaTodosLosEstados);
+    }
+
+    public void actualizarSismografo(List <Estado> listaTodosLosEstados) {
+        for (Estado estado : listaTodosLosEstados) {
+            if (estado.sosAmbitoSismografo() && estado.sosFueraDeServicio()) {
+                this.setEstadoFueraDeServicio(estado);
+                break;
+            }
+        }
+
+       this.ordenInspeccionSeleccionada.actualizarSismografo(this.listSeleccionMotivo, this.listComentarioParaMotivo, this.estadoFueraDeServicio , this.empleadoLogueado, this.fechaHoraActual);
+    }
+
+    public void obtenerMailResponsableReparacion(List<Empleado> listaEmpleados) {
+        for (Empleado empleado : listaEmpleados) {
+            if (empleado.sosResponsableReperacion().sosResponsableReparacion()) {
+                this.listMailsResponsables.add(empleado.getMail());
+            }
+        }
+    }
+
+    public void enviarMailCierreInspeccion() {
+    //interfazNotificacionMail.enviarNotificaciones(this.listMailsResponsables)
+    }
+
+    public void publicarEnMonitores() {
+        //pantallaCCRS.publicarEnMonitores();
+    }

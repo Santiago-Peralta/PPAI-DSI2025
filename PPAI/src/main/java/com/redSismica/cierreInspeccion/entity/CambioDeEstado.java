@@ -1,7 +1,7 @@
 package com.redSismica.cierreInspeccion.entity;
+
 import java.util.List;
 import java.util.ArrayList;
-
 import java.time.LocalDateTime;
 
 public class CambioDeEstado {
@@ -15,7 +15,7 @@ public class CambioDeEstado {
         this.fechaHoraFin = fechaHoraFin;
         this.fechaHoraInicio = fechaHoraInicio;
         this.estado = estado;
-        this.motivoFueraServicio = motivoFueraServicio;
+        this.motivoFueraServicio = (motivoFueraServicio != null) ? motivoFueraServicio : new ArrayList<>();
         this.responsableInspeccion = responsableInspeccion;
     }
 

@@ -54,7 +54,7 @@ public class Empleado {
     }
     
     // Metodos Unicos
-    public boolean esResponsableReparacion() {
+    public boolean sosResponsableReparacion() {
         return rol != null && rol.sosResponsableReparacion();
     }
 

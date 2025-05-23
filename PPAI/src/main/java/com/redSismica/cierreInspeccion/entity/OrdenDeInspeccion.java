@@ -108,15 +108,12 @@ public class OrdenDeInspeccion {
     }
 
 
-    public void cerrar(Estado estadoCerrado, LocalDateTime fechaHoraActual) {
-        // Settear fechaHoraActual
-        setFechaHoraCierre(fechaHoraActual);
-        // Settear estado a cerrado
+    public void cerrar(Estado estadoCerrado) {
         setEstado(estadoCerrado);
     }
 
-    public void actualizarSismografo(List<MotivoFueraServicio> motivos) {
-        this.estacionSismologica.cerrarServicio(motivos, this.empleado, estado);
+    public void actualizarSismografo(List<MotivoFueraServicio> motivos, List<String> comentarios, Estado estado, Empleado responsableInspeccion, LocalDateTime ahora) {
+        this.estacionSismologica.cerrarServicio(motivos, comentarios, estado, responsableInspeccion, ahora);
     }
 
     // Completo
