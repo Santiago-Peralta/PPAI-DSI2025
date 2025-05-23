@@ -40,6 +40,7 @@ public class Sesion {
         this.usuario = usuario;
     }
     
+    // Metodos unicos
     public String obtenerRILogueado() {
         if (this.fechaHoraFin == null) {
             return this.usuario.getNombreUsuario();

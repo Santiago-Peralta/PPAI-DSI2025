@@ -10,10 +10,11 @@ public class OrdenDeInspeccion {
     private String observacionCierre;
     private Estado estado;
     private EstacionSismologica estacionSismologica;
+    private Empleado empleado;
 
     public OrdenDeInspeccion(int numeroOrden, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFinalizacion,
                              LocalDateTime fechaHoraCierre, String observacionCierre, Estado estado,
-                             EstacionSismologica estacionSismologica) {
+                             EstacionSismologica estacionSismologica, Empleado empleado) {
         this.numeroOrden = numeroOrden;
         this.fechaHoraInicio = fechaHoraInicio;
         this.fechaHoraFinalizacion = fechaHoraFinalizacion;
@@ -21,6 +22,7 @@ public class OrdenDeInspeccion {
         this.observacionCierre = observacionCierre;
         this.estado = estado;
         this.estacionSismologica = estacionSismologica;
+        this.empleado = empleado;
     }
 
     public int getNumeroOrden() {
@@ -79,17 +81,33 @@ public class OrdenDeInspeccion {
         this.estacionSismologica = estacionSismologica;
     }
 
+
+    // Metodos unicos
     public boolean sosCompletamenteRealizada() {
         return estado != null && estado.sosCompletamenteRealizada();
     }
 
-/*     public String obtenerDatosOI() {
+    public String obtenerDatosOI() {
         int numero = this.getNumeroOrden();
         String fechaFinal = this.getFechaHoraFinalizacion().toString();
         String nombreEstacion = this.getEstacionSismologica().getNombre();
-        String idSismografo = this.getEstacionSismologica().getIdentificadorSismografo().getIdentificadorSismografo();
+        int idSismografo = this.getIdentificadorSismografo();
 
-        return String.format("Orden: %d | Finaliza: %s | Estación: %s | Sismógrafo: %s",
+        return String.format("Orden: %d | Finaliza: %s | Estación: %s | Sismógrafo: %d",
                             numero, fechaFinal, nombreEstacion, idSismografo);
-    }    */
+    }   
+
+    public int getIdentificadorSismografo() {
+        return estacionSismologica.getIdentificadorSismografo();
+    }
+
+
+    // Faltaria atributo de que una OI tiene 1 empleado??
+    public boolean sosDeEmpleado(Empleado empleado) {
+        return empleado != null;
+    }
+
+    // Falta cerrar() actualizarSismografo()
+
+
 }

@@ -31,20 +31,20 @@ public class GestorCierreInspeccion {
         Sismografo sismografo2 = new Sismografo(LocalDate.of(2024, 1, 15), 2, 20, estadoSismografo, null); 
 
         // Crear Estaciones
-        EstacionSismologica estacion1 = new EstacionSismologica(1, "Documento", LocalDateTime.now(), -31, 64, "Estacion Central", 45678);
-        EstacionSismologica estacion2 = new EstacionSismologica(2, "Documento", LocalDateTime.now(), -2, 64, "Estacion Oeste", 1239);
+        EstacionSismologica estacion1 = new EstacionSismologica(1, "Documento", LocalDateTime.now(), -31, 64, "Estacion Central", 45678, sismografo1);
+        EstacionSismologica estacion2 = new EstacionSismologica(2, "Documento", LocalDateTime.now(), -2, 64, "Estacion Oeste", 1239, sismografo2);
 
         // Añadir órdenes de inspección a la simulación
-        addOrden(new OrdenDeInspeccion(101, LocalDateTime.now().minusDays(5), LocalDateTime.now().minusDays(1),
-                                     null, null, estadoRealizada, estacion1));
-        addOrden(new OrdenDeInspeccion(102, LocalDateTime.now().minusDays(4), LocalDateTime.now().minusHours(12),
-                                     null, null, estadoRealizada, estacion2));
-        addOrden(new OrdenDeInspeccion(103, LocalDateTime.now().minusDays(2), LocalDateTime.now().minusHours(6),
-                                     null, null, estadoRealizada, estacion1));
-        addOrden(new OrdenDeInspeccion(104, LocalDateTime.now().minusDays(1), null, // Esta no está finalizada
-                                     null, null, estadoRechazada, estacion2));
-        addOrden(new OrdenDeInspeccion(105, LocalDateTime.now().minusDays(10), LocalDateTime.now().minusDays(8),
-                                     LocalDateTime.now().minusDays(7), "Cierre automático", estadoCerrada, estacion1));
+        // addOrden(new OrdenDeInspeccion(101, LocalDateTime.now().minusDays(5), LocalDateTime.now().minusDays(1),
+        //                              null, null, estadoRealizada, estacion1));
+        // addOrden(new OrdenDeInspeccion(102, LocalDateTime.now().minusDays(4), LocalDateTime.now().minusHours(12),
+        //                              null, null, estadoRealizada, estacion2));
+        // addOrden(new OrdenDeInspeccion(103, LocalDateTime.now().minusDays(2), LocalDateTime.now().minusHours(6),
+        //                              null, null, estadoRealizada, estacion1));
+        // addOrden(new OrdenDeInspeccion(104, LocalDateTime.now().minusDays(1), null, // Esta no está finalizada
+        //                              null, null, estadoRechazada, estacion2));
+        // addOrden(new OrdenDeInspeccion(105, LocalDateTime.now().minusDays(10), LocalDateTime.now().minusDays(8),
+        //                              LocalDateTime.now().minusDays(7), "Cierre automático", estadoCerrada, estacion1));
     }
 
     private void addOrden(OrdenDeInspeccion orden) {

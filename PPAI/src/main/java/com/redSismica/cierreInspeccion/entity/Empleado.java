@@ -53,7 +53,15 @@ public class Empleado {
         this.rol = rol;
     }
     
+    // Metodos Unicos
     public boolean esResponsableReparacion() {
         return rol != null && rol.sosResponsableReparacion();
     }
+
+    public String obtenerMail() {
+        return mail;
+    }
+
 }
+
+// Completo

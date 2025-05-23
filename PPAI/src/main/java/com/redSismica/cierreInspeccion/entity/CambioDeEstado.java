@@ -59,6 +59,8 @@ public class CambioDeEstado {
         this.responsableInspeccion = responsableInspeccion;
     }
 
+
+    // Metodos Unicos
     public boolean sosActual() {
         return this.fechaHoraFin == null;
     }
@@ -73,3 +75,5 @@ public class CambioDeEstado {
     
 
 }
+
+//Completo

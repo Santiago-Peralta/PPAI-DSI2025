@@ -27,6 +27,8 @@ public class Estado {
         this.nombreEstado = nombreEstado;
     }
 
+
+    // Metodos unicos
     public boolean sosCompletamenteRealizada() {
         return "Completamente Realizada".equalsIgnoreCase(nombreEstado);
     }
@@ -37,5 +39,17 @@ public class Estado {
 
     public boolean sosCerrada() {
         return "Cerrada".equalsIgnoreCase(nombreEstado);
+    }
+
+    // public boolean sosAmbitoOI() {
+    //     return ;
+    // }
+
+    // public boolean sosAmbitoSismografo() {
+    //     return ;
+    // }
+
+    public boolean sosFueraDeServicio() {
+        return "Fuera de Servicio".equalsIgnoreCase(nombreEstado);
     }
 }

@@ -1,7 +1,7 @@
 package com.redSismica.cierreInspeccion.controller;
 
 import com.redSismica.cierreInspeccion.entity.OrdenDeInspeccion;
-import com.redSismica.cierreInspeccion.services.GestorCierreInspeccion; // Asegúrate de que este sea el paquete correcto
+import com.redSismica.cierreInspeccion.services.GestorCierreInspeccion;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,14 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Controller // Usar @Controller para devolver vistas
+@Controller // @Controller para devolver vistas
 public class GestorCierreInspeccionController {
 
     private final GestorCierreInspeccion gestorCierreInspeccion;
 
     // La orden seleccionada actual se mantendrá aquí.
-    // En un entorno de producción, esto podría gestionarse de forma diferente
-    // (por ejemplo, pasando el numeroOrden en cada request o usando una sesión HTTP).
     private OrdenDeInspeccion ordenSeleccionadaActual = null;
 
 
@@ -46,7 +44,7 @@ public class GestorCierreInspeccionController {
 
     @PostMapping("/cierre-inspeccion/seleccionar")
     public String seleccionarOrden(@RequestParam("idOrden") Integer idOrden, RedirectAttributes redirectAttributes) {
-        // Ahora buscamos por Integer (numeroOrden)
+        // Ahora buscamos por numeroOrden
         Optional<OrdenDeInspeccion> ordenOpt = gestorCierreInspeccion.getOrdenById(idOrden);
 
         if (ordenOpt.isPresent()) {
@@ -65,7 +63,6 @@ public class GestorCierreInspeccionController {
         }
 
         try {
-            // ¡Asegúrate de que esta línea use getNumeroOrden() y no getId()!
             gestorCierreInspeccion.cerrarOrdenInspeccion(ordenSeleccionadaActual.getNumeroOrden());
             redirectAttributes.addFlashAttribute("mensaje", "Orden " + ordenSeleccionadaActual.getNumeroOrden() + " cerrada exitosamente.");
             this.ordenSeleccionadaActual = null; // Limpiar la selección después del cierre

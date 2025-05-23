@@ -10,8 +10,9 @@ public class EstacionSismologica {
     private int longitud;
     private String nombre;
     private int nroCertificacionAdquisicion;
+    private Sismografo sismografo;
 
-    public EstacionSismologica(int codigoEstacion, String documentoCertificacionAdq, LocalDateTime fechaSolicitudCreacion, int latitud, int longitud, String nombre, int nroCertificacionAdquisicion) {
+    public EstacionSismologica(int codigoEstacion, String documentoCertificacionAdq, LocalDateTime fechaSolicitudCreacion, int latitud, int longitud, String nombre, int nroCertificacionAdquisicion, Sismografo sismografo) {
         this.codigoEstacion = codigoEstacion;
         this.documentoCertificacionAdq = documentoCertificacionAdq;
         this.fechaSolicitudCreacion = fechaSolicitudCreacion;
@@ -19,10 +20,19 @@ public class EstacionSismologica {
         this.longitud = longitud;
         this.nombre = nombre;
         this.nroCertificacionAdquisicion = nroCertificacionAdquisicion;
+        this.sismografo = sismografo;
     }
 
 
     // Setters y Getters
+    public Sismografo getSismografo() {
+        return sismografo;
+    }
+
+    public void setSismografo(Sismografo sismografo) {
+        this.sismografo = sismografo;
+    }
+
     public int getCodigoEstacion() {
         return codigoEstacion;
     }
@@ -81,7 +91,15 @@ public class EstacionSismologica {
 
     // Faltan metodos (todos). Preguntar por metodo getSismografo() -> para mi falta atributo Sismografo sismografo que hace referencia al numero del sismografo
 
-    public void getIdentificadorSismografo() {
-
+    public int getIdentificadorSismografo() {
+        // Verificar si el sismografo es nulo
+        if (sismografo != null) {
+            return sismografo.getIdentificadorSismografo();
+        } else {
+            System.out.println("No hay un sismografo asociado");
+            return -1;
+        }
     }
+
+    
 }

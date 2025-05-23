@@ -35,4 +35,6 @@ public class Usuario {
         this.empleado = empleado;
     }
     
+    // Metodos unicos (Preguntar a donde apunta el getRILogueado())
+    
 }
